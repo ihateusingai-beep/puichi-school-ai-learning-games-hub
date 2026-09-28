@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <meta name="googlebot" content="notranslate" />
+  <meta name="theme-color" content="#426eb4" />
+  <title>將軍澳培智學校</title>
+  <style>
+    :root {
+      --bg: #e5f3ff;
+      --bg-soft: #f7fafc;
+      --surface: #ffffff;
+      --ink: #525b68;
+      --muted: #6c757d;
+      --line: #d6e4f0;
+      --accent: #426eb4;
+      --accent-2: #4774ba;
+      --accent-soft: #99c6dd;
+      --accent-ink: #2f4f8a;
+      --green: #6cc084;
+      --shadow: 0 8px 22px rgba(66, 110, 180, 0.12);
+      --radius: 14px;
+      --touch: 48px;
+      --font: Arial, "微軟正黑體", "Microsoft JhengHei", "PingFang HK", "Open Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background:
+        linear-gradient(180deg, #e5f3ff 0%, #f7fafc 48%, #eef5fb 100%);
+      color: var(--ink);
+      min-height: 100dvh;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: text;
+      user-select: text;
+    }
+    a { color: inherit; text-decoration: none; }
+    button {
+      font: inherit; border: 0; background: none; cursor: pointer; color: inherit;
+    }
+    img { display: block; max-width: 100%; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+    }
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.1rem 0 2.5rem;
+    }
+    header.hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.95rem 1.15rem;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 12px;
+      height: 36px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-soft));
+      flex: 0 0 auto;
+    }
+    .school-name {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+      line-height: 1.25;
+      font-weight: 800;
+      color: var(--accent-ink);
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: #e5f3ff;
+      border: 1px solid #c5dcf0;
+      color: var(--accent-ink);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0.5rem;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.55rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(66, 110, 180, 0.08);
+    }
+    .tab {
+      min-height: var(--touch);
+      padding: 0 1rem;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.15s ease;
+    }
+    .tab:hover { background: #e5f3ff; color: var(--accent-ink); }
+    .tab.active {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(66, 110, 180, 0.28);
+    }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0.25rem 0 0.85rem;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-ink);
+    }
+    .count { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(66, 110, 180, 0.16);
+    }
+    .thumb {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(145deg, #e5f3ff, #cfe4f7 55%, #99c6dd);
+      overflow: hidden;
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--accent-ink);
+      opacity: 0.5;
+    }
+    .body {
+      display: grid;
+      gap: 0.65rem;
+      padding: 0.9rem 0.95rem 1rem;
+    }
+    .title {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.3;
+      font-weight: 800;
+      color: #3a4654;
+    }
+    .desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      min-height: 1.3em;
+    }
+    .author {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.65rem;
+      align-items: center;
+      margin-top: 0.1rem;
+    }
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: var(--touch);
+      padding: 0 1rem;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 6px 14px rgba(66, 110, 180, 0.25);
+      transition: transform 0.12s ease, filter 0.12s ease;
+    }
+    .open-btn:hover { filter: brightness(1.06); background: var(--accent-2); }
+    .open-btn:active { transform: scale(0.98); }
+    .qr-box {
+      width: 84px;
+      height: 84px;
+      padding: 6px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .qr-box img { width: 100%; height: 100%; object-fit: contain; }
+    .empty {
+      grid-column: 1 / -1;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(255,255,255,0.8);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+    }
+    .status {
+      margin-top: 1.1rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+    footer {
+      margin-top: 1.75rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 1.1rem, 100%); padding-top: 0.8rem; }
+      .toolbar {
+        border-radius: 16px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .toolbar::-webkit-scrollbar { display: none; }
+      .tab { white-space: nowrap; flex: 0 0 auto; }
+      .actions { grid-template-columns: 1fr; }
+      .qr-box { width: 96px; height: 96px; justify-self: start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+    @media print {
+      body { background: #fff; }
+      .toolbar { position: static; box-shadow: none; }
+      .open-btn { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <p class="school-name" id="schoolName">將軍澳培智學校</p>
+      </div>
+      <div class="meta-row">
+        <span class="chip" id="visibleCatChip">—</span>
+        <span class="chip" id="gameCountChip">—</span>
+      </div>
+    </header>
+
+    <nav class="toolbar" id="tabs" aria-label="科目分類"></nav>
+
+    <div class="section-head">
+      <h2 id="sectionTitle">全部</h2>
+      <div class="count" id="sectionCount"></div>
+    </div>
+
+    <main class="grid" id="grid" aria-live="polite"></main>
+    <p class="status" id="status"></p>
+
+    <footer>
+      更新：改 <code>GAMES_DATA</code> → 存檔 → 上載<br />
+      單檔 HTML
+    </footer>
+  </div>
+
+  <script>
+    /* =========================================================
+       只改呢度（GAMES_DATA）
+       visible: false = 預留，頁面唔顯示
+       thumb: 可填圖片網址，或留空用首字
+       ========================================================= */
+    const GAMES_DATA = {
+      school: "將軍澳培智學校",
+      title: "",
+      categories: [
+        {
+          id: "lang",
+          name: "語文",
+          visible: true,
+          games: [
+            {
+              title: "示例：語文遊戲",
+              url: "https://example.com/lang-demo",
+              thumb: "",
+              author: "老師",
+              desc: "示範卡，可刪除"
+            }
+          ]
+        },
+        {
+          id: "math",
+          name: "數學",
+          visible: true,
+          games: [
+            {
+              title: "示例：數學遊戲",
+              url: "https://example.com/math-demo",
+              thumb: "",
+              author: "老師",
+              desc: "示範卡，可刪除"
+            }
+          ]
+        },
+        {
+          id: "ict",
+          name: "電腦",
+          visible: true,
+          games: [
+            {
+              title: "示例：電腦遊戲",
+              url: "https://example.com/ict-demo",
+              thumb: "",
+              author: "老師",
+              desc: "示範卡，可刪除"
+            }
+          ]
+        },
+        /* 預留科目：visible:false 先唔顯示 */
+        { id: "sci", name: "科學", visible: false, games: [] },
+        { id: "life", name: "生活", visible: false, games: [] },
+        { id: "art", name: "美藝", visible: false, games: [] },
+        { id: "music", name: "音樂", visible: false, games: [] },
+        { id: "pe", name: "體育", visible: false, games: [] }
+      ]
+    };
+    /* ===================== 以上係資料區 ===================== */
+
+    const state = { active: "all" };
+    const $ = (id) => document.getElementById(id);
+
+    function qrUrl(target) {
+      return "https://api.qrserver.com/v1/create-qr-code/?size=168x168&margin=8&data=" +
+        encodeURIComponent(target);
+    }
+    function safeText(v, fallback) {
+      return (v == null || String(v).trim() === "") ? (fallback || "") : String(v);
+    }
+    function visibleCategories(data) {
+      return (data.categories || []).filter((c) => c.visible !== false);
+    }
+    function allVisibleGames(data) {
+      return visibleCategories(data).flatMap((cat) =>
+        (cat.games || []).map((g) => ({
+          ...g,
+          categoryId: cat.id,
+          categoryName: cat.name
+        }))
+      );
+    }
+    function gamesFor(data, active) {
+      const all = allVisibleGames(data);
+      if (active === "all") return all;
+      return all.filter((g) => g.categoryId === active);
+    }
+    function initialFor(title) {
+      return safeText(title, "?").trim().slice(0, 1);
+    }
+
+    function renderTabs(data) {
+      const tabs = $("tabs");
+      const cats = visibleCategories(data);
+      const items = [{ id: "all", name: "全部" }].concat(
+        cats.map((c) => ({ id: c.id, name: c.name }))
+      );
+      tabs.innerHTML = items.map((item) => {
+        const on = item.id === state.active;
+        return (
+          '<button type="button" class="tab' + (on ? " active" : "") +
+          '" data-id="' + item.id + '" aria-pressed="' + on + '">' +
+          item.name + "</button>"
+        );
+      }).join("");
+      tabs.querySelectorAll(".tab").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          state.active = btn.getAttribute("data-id");
+          render();
+        });
+      });
+    }
+
+    function renderCards(list) {
+      const grid = $("grid");
+      if (!list.length) {
+        grid.innerHTML =
+          '<div class="empty">呢個分類暫時未有遊戲。<br />喺 GAMES_DATA 加一筆就得。</div>';
+        return;
+      }
+      grid.innerHTML = list.map((g) => {
+        const title = safeText(g.title, "未命名遊戲");
+        const url = safeText(g.url, "#");
+        const desc = safeText(g.desc, "");
+        const author = safeText(g.author, "");
+        const thumb = safeText(g.thumb, "");
+        const cat = safeText(g.categoryName, "");
+        const meta = author
+          ? (author + (cat ? " · " + cat : ""))
+          : cat;
+
+        const thumbHtml = thumb
+          ? (
+              '<img src="' + thumb + '" alt="' + title + '" loading="lazy" ' +
+              'onerror="this.style.display=\'none\';' +
+              'var f=this.parentNode.querySelector(\'.thumb-fallback\');' +
+              'if(f) f.hidden=false;" />' +
+              '<div class="thumb-fallback" hidden>' + initialFor(title) + "</div>"
+            )
+          : '<div class="thumb-fallback">' + initialFor(title) + "</div>";
+
+        return (
+          '<article class="card">' +
+            '<div class="thumb">' + thumbHtml + "</div>" +
+            '<div class="body">' +
+              "<div>" +
+                '<h3 class="title">' + title + "</h3>" +
+                (meta ? '<div class="author">' + meta + "</div>" : "") +
+                '<p class="desc">' + desc + "</p>" +
+              "</div>" +
+              '<div class="actions">' +
+                '<a class="open-btn" href="' + url +
+                '" target="_blank" rel="noopener noreferrer">打開遊戲</a>' +
+                '<div class="qr-box" title="掃碼打開">' +
+                  '<img src="' + qrUrl(url) + '" alt="' + title +
+                  ' QR" loading="lazy" />' +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+          "</article>"
+        );
+      }).join("");
+    }
+
+    function renderMeta(data) {
+      const cats = visibleCategories(data);
+      const games = allVisibleGames(data);
+      const hidden = (data.categories || []).filter((c) => c.visible === false).length;
+      $("schoolName").textContent = safeText(data.school, "將軍澳培智學校");
+      document.title = $("schoolName").textContent;
+      $("visibleCatChip").textContent = cats.length + " 個科目";
+      $("gameCountChip").textContent = games.length + " 個遊戲";
+
+      const activeName =
+        state.active === "all"
+          ? "全部"
+          : ((cats.find((c) => c.id === state.active) || {}).name || "全部");
+      const list = gamesFor(data, state.active);
+      $("sectionTitle").textContent = activeName;
+      $("sectionCount").textContent = list.length + " 個";
+      $("status").textContent =
+        "單檔 HTML · 隱藏科目 " + hidden + " 個（預留）";
+    }
+
+    function render() {
+      renderTabs(GAMES_DATA);
+      renderMeta(GAMES_DATA);
+      renderCards(gamesFor(GAMES_DATA, state.active));
+    }
+
+    render();
+  </script>
+</body>
+</html>
