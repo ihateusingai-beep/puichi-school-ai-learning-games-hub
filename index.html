@@ -157,63 +157,59 @@
       z-index: var(--z-nav);
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
-      padding: 0.45rem;
-      margin-bottom: 1.15rem;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--line-soft);
-      border-radius: 999px;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.85),
-        0 8px 22px rgba(66, 110, 180, 0.08);
+      gap: 0.4rem;
+      padding: 0.4rem;
+      margin-bottom: 1.05rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(66, 110, 180, 0.06);
     }
     .tab {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      min-height: var(--touch);
-      padding: 0 1.05rem;
-      border-radius: 999px;
+      gap: 0.4rem;
+      min-height: 44px;
+      padding: 0 0.95rem;
+      border-radius: 10px;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       border: 1px solid transparent;
-      transition: background 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.15s var(--ease);
+      transition: background 0.15s ease, color 0.15s ease;
     }
     .tab-dot {
-      width: 0.55rem;
-      height: 0.55rem;
+      width: 0.48rem;
+      height: 0.48rem;
       border-radius: 50%;
       background: var(--cat, #8aa0b5);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat, #8aa0b5) 22%, transparent);
       flex: 0 0 auto;
     }
     .tab:hover {
       background: var(--accent-wash);
       color: var(--accent-ink);
     }
-    .tab:active { transform: scale(0.98); }
+    .tab:active { transform: none; }
     .tab.active {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(66, 110, 180, 0.26);
+      background: var(--accent-wash);
+      color: var(--accent-ink);
+      border-color: #b7d2ea;
+      box-shadow: none;
     }
     .tab.active .tab-dot {
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.28);
+      background: var(--cat, var(--accent));
+      box-shadow: none;
     }
     .tab:focus-visible { outline-offset: 2px; }
 
-    .tab[data-id="lang"], .card[data-cat="lang"] { --cat: #d97757; }
-    .tab[data-id="math"], .card[data-cat="math"] { --cat: #4f9d6e; }
+    .tab[data-id="lang"], .card[data-cat="lang"] { --cat: #c56a4a; }
+    .tab[data-id="math"], .card[data-cat="math"] { --cat: #3f8a5c; }
     .tab[data-id="ict"], .card[data-cat="ict"] { --cat: #426eb4; }
-    .tab[data-id="sci"], .card[data-cat="sci"] { --cat: #2f9e9a; }
-    .tab[data-id="life"], .card[data-cat="life"] { --cat: #c9842f; }
-    .tab[data-id="art"], .card[data-cat="art"] { --cat: #7b6db0; }
-    .tab[data-id="music"], .card[data-cat="music"] { --cat: #c45d8c; }
-    .tab[data-id="pe"], .card[data-cat="pe"] { --cat: #e08a3a; }
+    .tab[data-id="sci"], .card[data-cat="sci"] { --cat: #2d8f8b; }
+    .tab[data-id="life"], .card[data-cat="life"] { --cat: #b87a2b; }
+    .tab[data-id="art"], .card[data-cat="art"] { --cat: #6d629e; }
+    .tab[data-id="music"], .card[data-cat="music"] { --cat: #b0537d; }
+    .tab[data-id="pe"], .card[data-cat="pe"] { --cat: #cc7c34; }
     .tab[data-id="all"] { --cat: #6b7f94; }
 
     .section-head {
@@ -221,155 +217,108 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 1rem;
-      margin: 0.15rem 0 0.95rem;
-      padding: 0 0.15rem;
+      margin: 0.1rem 0 0.85rem;
+      padding: 0 0.1rem;
     }
     .section-head h2 {
       margin: 0;
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      letter-spacing: -0.01em;
       color: var(--accent-ink);
     }
-    .count {
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
-    }
+    .count { display: none; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 1.1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
     }
 
     .card {
       display: grid;
       grid-template-rows: auto 1fr;
       background: var(--surface);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.95),
-        var(--shadow);
-      transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
-      animation: cardIn 0.45s var(--ease) both;
-      border-top: 3px solid var(--cat, var(--accent));
+      box-shadow: 0 6px 18px rgba(66, 110, 180, 0.07);
+      transition: box-shadow 0.18s ease, border-color 0.18s ease;
     }
-    .card:nth-child(1) { animation-delay: 0.02s; }
-    .card:nth-child(2) { animation-delay: 0.07s; }
-    .card:nth-child(3) { animation-delay: 0.12s; }
-    .card:nth-child(4) { animation-delay: 0.17s; }
-    .card:nth-child(5) { animation-delay: 0.22s; }
-    .card:nth-child(6) { animation-delay: 0.27s; }
     .card:hover {
-      transform: translateY(-3px);
       border-color: #b7d2e8;
-      border-top-color: var(--cat, var(--accent));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.95),
-        var(--shadow-hover);
-    }
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      box-shadow: 0 10px 24px rgba(66, 110, 180, 0.12);
     }
 
     .thumb {
       position: relative;
       aspect-ratio: 16 / 9;
-      background:
-        linear-gradient(155deg, #eaf5ff 0%, #d4e8f7 48%, #b9d7ec 100%);
+      background: #dceaf5;
       overflow: hidden;
-    }
-    .thumb::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 28%;
-      background: linear-gradient(to top, rgba(47, 79, 138, 0.08), transparent);
-      pointer-events: none;
     }
     .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      transition: transform 0.35s var(--ease);
     }
-    .card:hover .thumb img { transform: scale(1.04); }
     .thumb-fallback {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
-      font-size: 2.35rem;
-      font-weight: 900;
-      color: var(--accent-ink);
-      opacity: 0.42;
-      letter-spacing: 0.02em;
-    }
-    .cat-pill {
-      position: absolute;
-      top: 0.65rem;
-      left: 0.65rem;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      min-height: 1.7rem;
-      padding: 0.15rem 0.6rem 0.15rem 0.45rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(255,255,255,0.95);
-      color: var(--ink-strong);
-      font-size: 0.75rem;
+      font-size: 1.1rem;
       font-weight: 800;
-      box-shadow: 0 4px 12px rgba(47, 59, 76, 0.12);
-    }
-    .cat-pill .tab-dot {
-      width: 0.45rem;
-      height: 0.45rem;
-      box-shadow: none;
+      color: var(--accent-ink);
+      opacity: 0.55;
+      padding: 1rem;
+      text-align: center;
+      line-height: 1.35;
     }
 
     .body {
       display: grid;
       grid-template-rows: 1fr auto;
       gap: 0.85rem;
-      padding: 1rem 1.05rem 1.05rem;
+      padding: 0.95rem 1rem 1rem;
       min-height: 0;
     }
-    .copy { display: grid; gap: 0.35rem; align-content: start; }
+    .copy { display: grid; gap: 0.3rem; align-content: start; }
+    .cat-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .cat-line .tab-dot {
+      width: 0.42rem;
+      height: 0.42rem;
+    }
     .title {
       margin: 0;
       font-size: 1.05rem;
-      line-height: 1.35;
+      line-height: 1.4;
       font-weight: 800;
       color: var(--ink-strong);
-      letter-spacing: -0.01em;
-      text-wrap: pretty;
     }
     .parent-info {
-      margin: 0;
-      color: var(--accent-ink);
-      font-size: 0.86rem;
-      font-weight: 700;
-      line-height: 1.4;
+      margin: 0.15rem 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.45;
     }
     .desc {
       margin: 0;
       color: var(--muted);
       font-size: 0.9rem;
       line-height: 1.5;
-      text-wrap: pretty;
     }
     .author {
-      color: var(--accent);
+      color: var(--muted);
       font-size: 0.8rem;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .actions {
@@ -382,31 +331,29 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: var(--touch);
-      padding: 0 1.05rem;
-      border-radius: var(--radius-sm);
+      min-height: 46px;
+      padding: 0 1rem;
+      border-radius: 10px;
       background: var(--accent);
       color: #fff;
       font-weight: 800;
-      letter-spacing: 0.01em;
       white-space: nowrap;
-      box-shadow: 0 8px 18px rgba(66, 110, 180, 0.24);
-      transition: background 0.18s var(--ease), transform 0.12s var(--ease), box-shadow 0.18s var(--ease);
+      box-shadow: none;
+      transition: background 0.15s ease;
     }
     .open-btn:hover {
       background: var(--accent-2);
-      box-shadow: 0 10px 22px rgba(66, 110, 180, 0.3);
+      box-shadow: none;
     }
-    .open-btn:active { transform: scale(0.98); }
+    .open-btn:active { transform: none; }
 
     .qr-box {
-      width: 86px;
-      height: 86px;
-      padding: 7px;
-      border-radius: var(--radius-sm);
+      width: 84px;
+      height: 84px;
+      padding: 6px;
+      border-radius: 10px;
       background: #fff;
       border: 1px solid var(--line);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);
     }
     .qr-box img {
       width: 100%;
@@ -433,10 +380,10 @@
       }
       header.hero {
         padding: 0.9rem 1rem;
-        border-radius: 16px;
+        border-radius: 14px;
       }
       .toolbar {
-        border-radius: 16px;
+        border-radius: 12px;
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -444,11 +391,11 @@
       }
       .toolbar::-webkit-scrollbar { display: none; }
       .tab { white-space: nowrap; flex: 0 0 auto; }
-      .grid { grid-template-columns: 1fr; gap: 0.95rem; }
+      .grid { grid-template-columns: 1fr; gap: 0.9rem; }
       .actions { grid-template-columns: 1fr; }
       .qr-box {
-        width: 100px;
-        height: 100px;
+        width: 96px;
+        height: 96px;
         justify-self: start;
       }
     }
@@ -459,15 +406,12 @@
         transition: none !important;
         animation: none !important;
       }
-      .card:hover { transform: none; }
-      .card:hover .thumb img { transform: none; }
     }
 
     @media print {
       body { background: #fff; }
       body::before { display: none; }
-      .toolbar { position: static; box-shadow: none; backdrop-filter: none; }
-      .open-btn { box-shadow: none; }
+      .toolbar { position: static; box-shadow: none; }
       .card { break-inside: avoid; box-shadow: none; }
     }
   </style>
@@ -480,7 +424,7 @@
         <div class="brand-mark" aria-hidden="true"></div>
         <p class="school-name" id="schoolName">培智智學平台</p>
       </div>
-      <p class="hero-tag" id="heroTag">陪孩子玩住學 · 手機一掃即開</p>
+      <p class="hero-tag" id="heroTag">喺屋企同小朋友一齊玩學習遊戲</p>
     </header>
 
     <nav class="toolbar" id="tabs" aria-label="科目分類"></nav>
@@ -501,7 +445,7 @@
        ========================================================= */
     const GAMES_DATA = {
       school: "培智智學平台",
-      tagline: "陪孩子玩住學 · 手機一掃即開",
+      tagline: "喺屋企同小朋友一齊玩學習遊戲",
       title: "",
       categories: [
         {
@@ -510,12 +454,12 @@
           visible: true,
           games: [
             {
-              title: "語文中文科冒險遊戲：火字部大挑戰",
+              title: "火字部大挑戰",
               url: "https://www.puichi.edu.hk/it-school/php/webcms/files/upload/tinymce//2026_2027/bottom/_radical_game_1790577999.html",
               thumb: "https://www.puichi.edu.hk/it-school/php/webcms/files/upload/tinymce//2026_2027/bottom/mar_1790582751.png",
               author: "",
-              desc: "",
-              parent: "約 5–10 分鐘 · 適合家中"
+              desc: "中文科部首遊戲",
+              parent: "家中大約 10 分鐘"
             }
           ]
         },
@@ -523,31 +467,13 @@
           id: "math",
           name: "數學",
           visible: true,
-          games: [
-            {
-              title: "示例：數學遊戲",
-              url: "https://example.com/math-demo",
-              thumb: "",
-              author: "老師",
-              desc: "示範卡，可刪除",
-              parent: "約 5–10 分鐘 · 適合家中"
-            }
-          ]
+          games: []
         },
         {
           id: "ict",
           name: "電腦",
           visible: true,
-          games: [
-            {
-              title: "示例：電腦遊戲",
-              url: "https://example.com/ict-demo",
-              thumb: "",
-              author: "老師",
-              desc: "示範卡，可刪除",
-              parent: "約 5–10 分鐘 · 適合家中"
-            }
-          ]
+          games: []
         },
         /* 預留科目：visible:false 先唔顯示 */
         { id: "sci", name: "科學", visible: false, games: [] },
@@ -624,7 +550,7 @@
     function renderCards(list) {
       const grid = $("grid");
       if (!list.length) {
-        grid.innerHTML = '<div class="empty">呢個分類暫時未有遊戲。</div>';
+        grid.innerHTML = '<div class="empty">暫時未有遊戲，稍後再睇。</div>';
         return;
       }
       grid.innerHTML = list.map((g) => {
@@ -635,41 +561,37 @@
         const thumb = safeText(g.thumb, "");
         const cat = safeText(g.categoryName, "");
         const catId = safeText(g.categoryId, "");
-        const parent = safeText(g.parent, "約 5–10 分鐘 · 適合家中");
-        const meta = author
-          ? (author + (cat ? " · " + cat : ""))
-          : "";
+        const parent = safeText(g.parent, "");
 
         const t = escapeHtml(title);
         const u = escapeHtml(url);
-        const pill = cat
-          ? ('<span class="cat-pill"><span class="tab-dot" aria-hidden="true"></span>' +
-             escapeHtml(cat) + "</span>")
-          : "";
         const thumbHtml = thumb
           ? (
-              pill +
               '<img src="' + escapeHtml(thumb) + '" alt="' + t + '" loading="lazy" ' +
               'onerror="this.style.display=\'none\';' +
               'var f=this.parentNode.querySelector(\'.thumb-fallback\');' +
               'if(f) f.hidden=false;" />' +
-              '<div class="thumb-fallback" hidden>' + escapeHtml(initialFor(title)) + "</div>"
+              '<div class="thumb-fallback" hidden>' + escapeHtml(cat || title) + "</div>"
             )
-          : pill + '<div class="thumb-fallback">' + escapeHtml(initialFor(title)) + "</div>";
+          : '<div class="thumb-fallback">' + escapeHtml(cat || title) + "</div>";
 
         return (
           '<article class="card" data-cat="' + escapeHtml(catId) + '">' +
             '<div class="thumb">' + thumbHtml + "</div>" +
             '<div class="body">' +
               '<div class="copy">' +
+                (cat
+                  ? '<div class="cat-line"><span class="tab-dot" aria-hidden="true"></span>' +
+                    escapeHtml(cat) + "</div>"
+                  : "") +
                 '<h3 class="title">' + t + "</h3>" +
                 (parent ? '<p class="parent-info">' + escapeHtml(parent) + "</p>" : "") +
-                (meta ? '<div class="author">' + escapeHtml(meta) + "</div>" : "") +
                 (desc ? '<p class="desc">' + escapeHtml(desc) + "</p>" : "") +
+                (author ? '<div class="author">' + escapeHtml(author) + "</div>" : "") +
               "</div>" +
               '<div class="actions">' +
                 '<a class="open-btn" href="' + u +
-                '" target="_blank" rel="noopener noreferrer">打開遊戲</a>' +
+                '" target="_blank" rel="noopener noreferrer">開始</a>' +
                 '<div class="qr-box" title="掃碼打開">' +
                   '<img src="' + qrUrl(url) + '" alt="' + t +
                   ' QR" loading="lazy" />' +
@@ -686,15 +608,15 @@
       $("schoolName").textContent = safeText(data.school, "培智智學平台");
       document.title = $("schoolName").textContent;
       const tag = $("heroTag");
-      if (tag) tag.textContent = safeText(data.tagline, "陪孩子玩住學 · 手機一掃即開");
+      if (tag) tag.textContent = safeText(data.tagline, "喺屋企同小朋友一齊玩學習遊戲");
 
       const activeName =
         state.active === "all"
           ? "全部"
           : ((cats.find((c) => c.id === state.active) || {}).name || "全部");
-      const list = gamesFor(data, state.active);
       $("sectionTitle").textContent = activeName;
-      $("sectionCount").textContent = list.length + " 個";
+      const count = $("sectionCount");
+      if (count) count.textContent = "";
     }
 
     function render() {
