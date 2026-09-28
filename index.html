@@ -6,8 +6,8 @@
   <meta name="google" content="notranslate" />
   <meta name="googlebot" content="notranslate" />
   <meta name="theme-color" content="#426eb4" />
-  <meta name="description" content="將軍澳培智學校教師小遊戲主頁" />
-  <title>將軍澳培智學校</title>
+  <meta name="description" content="培智智學平台教師小遊戲主頁" />
+  <title>培智智學平台</title>
   <style>
     :root {
       --bg: #e8f3fc;
@@ -409,7 +409,7 @@
     <header class="hero">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true"></div>
-        <p class="school-name" id="schoolName">將軍澳培智學校</p>
+        <p class="school-name" id="schoolName">培智智學平台</p>
       </div>
     </header>
 
@@ -430,7 +430,7 @@
        thumb: 可填圖片網址，或留空用首字
        ========================================================= */
     const GAMES_DATA = {
-      school: "將軍澳培智學校",
+      school: "培智智學平台",
       title: "",
       categories: [
         {
@@ -600,7 +600,7 @@
 
     function renderMeta(data) {
       const cats = visibleCategories(data);
-      $("schoolName").textContent = safeText(data.school, "將軍澳培智學校");
+      $("schoolName").textContent = safeText(data.school, "培智智學平台");
       document.title = $("schoolName").textContent;
 
       const activeName =
