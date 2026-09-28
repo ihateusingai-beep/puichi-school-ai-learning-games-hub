@@ -102,10 +102,11 @@
 
     header.hero {
       display: flex;
-      align-items: center;
-      gap: 0.85rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
       margin-bottom: 1.1rem;
-      padding: 1rem 1.2rem;
+      padding: 1.15rem 1.25rem 1.2rem;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88));
       border: 1px solid var(--line-soft);
@@ -121,6 +122,7 @@
       align-items: center;
       gap: 0.8rem;
       min-width: 0;
+      width: 100%;
     }
     .brand-mark {
       width: 10px;
@@ -138,6 +140,15 @@
       letter-spacing: -0.01em;
       color: var(--accent-ink);
       text-wrap: balance;
+    }
+    .hero-tag {
+      margin: 0 0 0 1.15rem;
+      max-width: 36rem;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      font-weight: 600;
+      line-height: 1.45;
+      text-wrap: pretty;
     }
 
     .toolbar {
@@ -159,6 +170,9 @@
         0 8px 22px rgba(66, 110, 180, 0.08);
     }
     .tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       min-height: var(--touch);
       padding: 0 1.05rem;
       border-radius: 999px;
@@ -167,6 +181,14 @@
       font-size: 0.95rem;
       border: 1px solid transparent;
       transition: background 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.15s var(--ease);
+    }
+    .tab-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: var(--cat, #8aa0b5);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat, #8aa0b5) 22%, transparent);
+      flex: 0 0 auto;
     }
     .tab:hover {
       background: var(--accent-wash);
@@ -178,7 +200,21 @@
       color: #fff;
       box-shadow: 0 8px 18px rgba(66, 110, 180, 0.26);
     }
+    .tab.active .tab-dot {
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.28);
+    }
     .tab:focus-visible { outline-offset: 2px; }
+
+    .tab[data-id="lang"], .card[data-cat="lang"] { --cat: #d97757; }
+    .tab[data-id="math"], .card[data-cat="math"] { --cat: #4f9d6e; }
+    .tab[data-id="ict"], .card[data-cat="ict"] { --cat: #426eb4; }
+    .tab[data-id="sci"], .card[data-cat="sci"] { --cat: #2f9e9a; }
+    .tab[data-id="life"], .card[data-cat="life"] { --cat: #c9842f; }
+    .tab[data-id="art"], .card[data-cat="art"] { --cat: #7b6db0; }
+    .tab[data-id="music"], .card[data-cat="music"] { --cat: #c45d8c; }
+    .tab[data-id="pe"], .card[data-cat="pe"] { --cat: #e08a3a; }
+    .tab[data-id="all"] { --cat: #6b7f94; }
 
     .section-head {
       display: flex;
@@ -220,6 +256,7 @@
         var(--shadow);
       transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
       animation: cardIn 0.45s var(--ease) both;
+      border-top: 3px solid var(--cat, var(--accent));
     }
     .card:nth-child(1) { animation-delay: 0.02s; }
     .card:nth-child(2) { animation-delay: 0.07s; }
@@ -230,6 +267,7 @@
     .card:hover {
       transform: translateY(-3px);
       border-color: #b7d2e8;
+      border-top-color: var(--cat, var(--accent));
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.95),
         var(--shadow-hover);
@@ -241,7 +279,7 @@
 
     .thumb {
       position: relative;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
       background:
         linear-gradient(155deg, #eaf5ff 0%, #d4e8f7 48%, #b9d7ec 100%);
       overflow: hidden;
@@ -258,9 +296,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       transition: transform 0.35s var(--ease);
     }
-    .card:hover .thumb img { transform: scale(1.03); }
+    .card:hover .thumb img { transform: scale(1.04); }
     .thumb-fallback {
       position: absolute;
       inset: 0;
@@ -271,6 +310,29 @@
       color: var(--accent-ink);
       opacity: 0.42;
       letter-spacing: 0.02em;
+    }
+    .cat-pill {
+      position: absolute;
+      top: 0.65rem;
+      left: 0.65rem;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 1.7rem;
+      padding: 0.15rem 0.6rem 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.95);
+      color: var(--ink-strong);
+      font-size: 0.75rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(47, 59, 76, 0.12);
+    }
+    .cat-pill .tab-dot {
+      width: 0.45rem;
+      height: 0.45rem;
+      box-shadow: none;
     }
 
     .body {
@@ -289,6 +351,13 @@
       color: var(--ink-strong);
       letter-spacing: -0.01em;
       text-wrap: pretty;
+    }
+    .parent-info {
+      margin: 0;
+      color: var(--accent-ink);
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.4;
     }
     .desc {
       margin: 0;
@@ -411,6 +480,7 @@
         <div class="brand-mark" aria-hidden="true"></div>
         <p class="school-name" id="schoolName">培智智學平台</p>
       </div>
+      <p class="hero-tag" id="heroTag">陪孩子玩住學 · 手機一掃即開</p>
     </header>
 
     <nav class="toolbar" id="tabs" aria-label="科目分類"></nav>
@@ -431,6 +501,7 @@
        ========================================================= */
     const GAMES_DATA = {
       school: "培智智學平台",
+      tagline: "陪孩子玩住學 · 手機一掃即開",
       title: "",
       categories: [
         {
@@ -443,7 +514,8 @@
               url: "https://www.puichi.edu.hk/it-school/php/webcms/files/upload/tinymce//2026_2027/bottom/_radical_game_1790577999.html",
               thumb: "https://www.puichi.edu.hk/it-school/php/webcms/files/upload/tinymce//2026_2027/bottom/mar_1790582751.png",
               author: "",
-              desc: ""
+              desc: "",
+              parent: "約 5–10 分鐘 · 適合家中"
             }
           ]
         },
@@ -457,7 +529,8 @@
               url: "https://example.com/math-demo",
               thumb: "",
               author: "老師",
-              desc: "示範卡，可刪除"
+              desc: "示範卡，可刪除",
+              parent: "約 5–10 分鐘 · 適合家中"
             }
           ]
         },
@@ -471,7 +544,8 @@
               url: "https://example.com/ict-demo",
               thumb: "",
               author: "老師",
-              desc: "示範卡，可刪除"
+              desc: "示範卡，可刪除",
+              parent: "約 5–10 分鐘 · 適合家中"
             }
           ]
         },
@@ -535,6 +609,7 @@
         return (
           '<button type="button" class="tab' + (on ? " active" : "") +
           '" data-id="' + escapeHtml(item.id) + '" aria-pressed="' + on + '">' +
+          '<span class="tab-dot" aria-hidden="true"></span>' +
           escapeHtml(item.name) + "</button>"
         );
       }).join("");
@@ -559,28 +634,36 @@
         const author = safeText(g.author, "");
         const thumb = safeText(g.thumb, "");
         const cat = safeText(g.categoryName, "");
+        const catId = safeText(g.categoryId, "");
+        const parent = safeText(g.parent, "約 5–10 分鐘 · 適合家中");
         const meta = author
           ? (author + (cat ? " · " + cat : ""))
-          : cat;
+          : "";
 
         const t = escapeHtml(title);
         const u = escapeHtml(url);
+        const pill = cat
+          ? ('<span class="cat-pill"><span class="tab-dot" aria-hidden="true"></span>' +
+             escapeHtml(cat) + "</span>")
+          : "";
         const thumbHtml = thumb
           ? (
+              pill +
               '<img src="' + escapeHtml(thumb) + '" alt="' + t + '" loading="lazy" ' +
               'onerror="this.style.display=\'none\';' +
               'var f=this.parentNode.querySelector(\'.thumb-fallback\');' +
               'if(f) f.hidden=false;" />' +
               '<div class="thumb-fallback" hidden>' + escapeHtml(initialFor(title)) + "</div>"
             )
-          : '<div class="thumb-fallback">' + escapeHtml(initialFor(title)) + "</div>";
+          : pill + '<div class="thumb-fallback">' + escapeHtml(initialFor(title)) + "</div>";
 
         return (
-          '<article class="card">' +
+          '<article class="card" data-cat="' + escapeHtml(catId) + '">' +
             '<div class="thumb">' + thumbHtml + "</div>" +
             '<div class="body">' +
               '<div class="copy">' +
                 '<h3 class="title">' + t + "</h3>" +
+                (parent ? '<p class="parent-info">' + escapeHtml(parent) + "</p>" : "") +
                 (meta ? '<div class="author">' + escapeHtml(meta) + "</div>" : "") +
                 (desc ? '<p class="desc">' + escapeHtml(desc) + "</p>" : "") +
               "</div>" +
@@ -602,6 +685,8 @@
       const cats = visibleCategories(data);
       $("schoolName").textContent = safeText(data.school, "培智智學平台");
       document.title = $("schoolName").textContent;
+      const tag = $("heroTag");
+      if (tag) tag.textContent = safeText(data.tagline, "陪孩子玩住學 · 手機一掃即開");
 
       const activeName =
         state.active === "all"
